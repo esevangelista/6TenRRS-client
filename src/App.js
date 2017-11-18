@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import CustomerInfoForm from './CustomerInfoForm'
+import Main from './Main'
 
 class App extends Component {
   render() {
     return(
-      <CustomerInfoForm />
+      <div>
+        <Main />
+      </div>
     )
   }
 }
