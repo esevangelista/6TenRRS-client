@@ -4,20 +4,6 @@ html, body{
   height: 100%
 }
 
-.divDesign {
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-right: 15px;
-	padding-top: 15px;
-	padding-left: 15px;
-	padding-right: 15px;
-	padding-bottom: 15px;
-	background-color: black;
-	border-style: solid;
-	border-width: 4px;
-	border-color: #3dd7e2;
-	border-radius: 10px;
-}
 
 /* SideBar Css */
 
@@ -25,9 +11,9 @@ html, body{
   height: 100%;
   width: 18%;
   float: left;
-  position: absolute;
+  position: fixed;
   z-index: 3;
-  background: black;
+  background: #353535;
 }
 
 .about{
@@ -54,6 +40,7 @@ html, body{
 .smallWhiteText {
 	margin-left: 10px;
 	font-size: 14px;
+
 	/*text-align: left;*/
 	color: white;
 }
@@ -66,33 +53,50 @@ html, body{
 .topButton {
 	/*margin-left: 20px;*/
 	/*margin-top: 15px;*/
+	text-align: center;
+	vertical-align: middle;
+	line-height: 60px; 
 	font-size: 24px;
 	width: 100%;
 	height: 60px;	
 	background-color: #1caf9a;
 	border: none;
-	color: white;
 }
 
 .topButton:hover{
 	background-color: #20ccb3;
 }
 
+.topButtonText{
+	color: white;
+}
+
 .navButton {
+	vertical-align: middle;
+	line-height: 50px; 
 	width: 100%;
 	height: 50px;	
-	background-color: black;
+	background-color: #353535;
 	border: none;
+	border-bottom: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: gray;
 	color: white;
 }
 
 .navButton:hover{
-	background-color: #343837;
+	background-color: #4c4c4c;
 }
 
-.navButton:active{
+.navButtonText{
+	text-align: center;
+	color:white;
+}
+
+.active{
 	background-color: #1caf9a;
 }
+
 
 /* End of button css */
 
@@ -104,7 +108,7 @@ html, body{
 	margin-left: 18%;
 	display: flex;
 	align-items: center;
-	background-color: black;
+	background-color: #353535;
 	height: 60px;
 }
 
@@ -126,7 +130,7 @@ html, body{
 
 .searchButton{
 	margin-left: 2px;
-	background-color: black;
+	background-color: #353535;
 	color: white;
 	border:none;
 }
@@ -161,5 +165,4 @@ html, body{
 	width: 500px;
 	height: 250px;
 }
-
 /* End of Content Css */

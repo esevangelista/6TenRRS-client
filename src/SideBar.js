@@ -1,66 +1,76 @@
 import React, {Component} from 'react';
+import { NavLink } from "react-router-dom";
 import './Pagecomponents.css'
-
-const passer = (anything) => {
-	return anything;
-}
 
 
 class SideBar extends Component {
 
-	/* Current content allowable values
-		1 - Customer Info
-		2 - Promo
-		3 - Product
-		4 - Branch
-		5 - Rewards
-		6 - Transactions
-		7 - View Points
-	 */
-
-	// constructor(props){
-	// 	super(props)
-
-	// 	this.state={
-	// 		current_content:"Customer Info"
-	// 	}
-
-	// 	this.handleContentChange = this.handleContentChange.bind(this);
-	// }
-
-	// handleContentChange(e){
-	// 	this.setState({current_content: value})
-	// }
-
 	render(){
+
+		var bgcolor = {
+			white: "white"
+		}
+
 		return(
 			<div class="page-sidebar">
-				<Button 
-				button_text="610 Rewards"
-				classname="topButton"/>
+				<NavLink to="/">
+					<Button 
+						button_text="610 RRS"
+						classname="topButton"
+						textclassname="topButtonText"/>
+				</NavLink>
 				<About />
 				<p class="smallWhiteText">Navigation</p>
-				<Button 
-				button_text="Customer Info"
-				classname="navButton"/>
-				<Button 
-				button_text="Promo"
-				classname="navButton"/>
-				<Button 
-				button_text="Product"
-				classname="navButton"/>
-				<Button 
-				button_text="Branch"
-				classname="navButton"/>
-				<Button 
-				button_text="Rewards"
-				classname="navButton"/>
-				<Button 
-				button_text="Transactions"
-				classname="navButton"/>
-				<Button 
-				button_text="View points"
-				classname="navButton"/>
+				
+				<NavLink to="/customerinfo" activeClassName="active" onlyActiveOnIndex>
+					<Button 
+						button_text="Customer Info"
+						classname="navButton"
+						textclassname="navButtonText"/>
+				</NavLink>
+				
+				<NavLink to="/promo">
+					<Button 
+						button_text="Promo"
+						classname="navButton"
+						textclassname="navButtonText"/>
+				</NavLink>
+
+				<NavLink to="/product">
+					<Button 
+						button_text="Product"
+						classname="navButton"
+						textclassname="navButtonText"/>
+				</NavLink>
+
+				<NavLink to="/branch">
+					<Button 
+						button_text="Branch"
+						classname="navButton"
+						textclassname="navButtonText"/>
+				</NavLink>
+
+
+				<NavLink to="/rewards">
+					<Button 
+						button_text="Rewards"
+						classname="navButton"
+						textclassname="navButtonText"/>
+				</NavLink>
+
+				<NavLink to="/transactions">
+					<Button 
+						button_text="Transactions"
+						classname="navButton"
+						textclassname="navButtonText"/>
+				</NavLink>
+
+				<NavLink to="/viewpoints">
+					<Button 
+						button_text="View points"
+						classname="navButton"
+						textclassname="navButtonText"/>
+				</NavLink>
 			</div>
 		)
 	}
@@ -78,6 +88,43 @@ class About extends Component {
 	}
 }
 
+class Button extends Component {
+
+	// constructor(props){
+	// 	super(props);
+
+	// 	this.state = {
+	// 		value:1
+	// 	}
+
+	// 	this.onClick = this.onClick.bind(this);
+	// 	this.changeValue = this.changeValue.bind(this)
+	// }
+
+	// onClick(e){
+	// 	var value = this.state.value;
+	// 	this.props.state = {
+	// 		content_manager:{value}
+	// 	}
+	// }
+
+	// changeValue(){
+	// 	this.setState({value: 3})
+	// }
+
+	render(){
+		const {button_text, classname, textclassname} = this.props;
+		return(
+			<div class={classname}>
+				<Text
+					text={button_text} 
+					classname={textclassname}
+				/>
+			</div>
+		)
+	}
+}
+
 class Text extends Component {
 	render(){
 		const {text, classname} = this.props;
@@ -89,18 +136,6 @@ class Text extends Component {
 	}
 }
 
-class Button extends Component {
-	render(){
-		const {button_text, classname} = this.props;
-		// const setContent = () => {}
-		return(
-			<div>
-				<input type="button" class={classname} 
-					value={button_text}
-					/>
-			</div>
-		)
-	}
-}
+
 
 export default SideBar;

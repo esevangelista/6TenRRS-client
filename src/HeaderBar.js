@@ -18,7 +18,6 @@ class HeaderBar extends Component {
 
 class Textbox extends Component {
 	render(){
-		const label_value = this.props.label_value;
 		return(
 			<div>
 				<input type="text"

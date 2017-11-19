@@ -3,14 +3,19 @@ import SideBar from './SideBar'
 import HeaderBar from './HeaderBar'
 import Content from './Content'
 import './Pagecomponents.css';
+import { HashRouter } from "react-router-dom";
 
 class Main extends Component {
 	render(){
 		return(
 			<div>
-				<SideBar />
-				<HeaderBar />
-				<Content />
+				<HashRouter>
+					<div>
+						<SideBar />
+						<HeaderBar />
+						<Content />
+					</div>
+				</HashRouter>
 			</div>
 		)
 	}
