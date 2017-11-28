@@ -1,20 +1,19 @@
 import React, {Component} from 'react';
 // import '../Pagecomponents.css'
-import SideBar from '../components/Sidebar'
 import Text from '../Text'
+import SideBar from '../components/Sidebar'
 import HeaderBar from '../HeaderBar'
 
-
-class RewardsContent extends Component {
+class PromoStarContent extends Component {
 	render(){
 		return(
 			<div class="contentHolder">
 				<SideBar />
 				<HeaderBar
-					term="Rewards"/>
+					term="PromoStars"/>
 				<div style={{'margin-top':'7%'}}>
 					<Text 
-						text="Home > Rewards"
+						text="Home > PromoStars"
 						classname="contentText"
 						/>
 					<Table />
@@ -30,10 +29,12 @@ class Table extends Component {
 		return(
 			<table class="ui celled table" id="table">
 			  <thead>
-			    <tr><th>Points</th>
+			    <tr><th>Stars Value</th>
 			    <th>Date Used</th>
 			    <th>Date Earned</th>
+			    <th>Expiry Date</th>
 			    <th>Customer ID</th>
+			    <th>Promo ID</th>
 			  </tr></thead>
 			  {/*<tbody>
 			    {content.map((element)=>{
@@ -54,4 +55,5 @@ class Table extends Component {
 	}
 }
 
-export default RewardsContent;
+
+export default PromoStarContent;

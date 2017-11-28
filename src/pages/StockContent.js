@@ -5,16 +5,16 @@ import Text from '../Text'
 import HeaderBar from '../HeaderBar'
 
 
-class RewardsContent extends Component {
+class StockContent extends Component {
 	render(){
 		return(
 			<div class="contentHolder">
 				<SideBar />
 				<HeaderBar
-					term="Rewards"/>
+					term="Stock"/>
 				<div style={{'margin-top':'7%'}}>
 					<Text 
-						text="Home > Rewards"
+						text="Home > Stocks"
 						classname="contentText"
 						/>
 					<Table />
@@ -30,10 +30,9 @@ class Table extends Component {
 		return(
 			<table class="ui celled table" id="table">
 			  <thead>
-			    <tr><th>Points</th>
-			    <th>Date Used</th>
-			    <th>Date Earned</th>
-			    <th>Customer ID</th>
+			    <tr><th>Product ID</th>
+			    <th>Product ID</th>
+			    <th>Quantity</th>
 			  </tr></thead>
 			  {/*<tbody>
 			    {content.map((element)=>{
@@ -54,4 +53,4 @@ class Table extends Component {
 	}
 }
 
-export default RewardsContent;
+export default StockContent;

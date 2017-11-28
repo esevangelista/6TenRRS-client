@@ -105,7 +105,7 @@ html, body{
 /* HeaderBar Css */
 
 .header{
-	margin-left: 18%;
+	/*margin-left: 18%;*/
 	display: flex;
 	align-items: center;
 	background-color: #353535;
@@ -144,10 +144,10 @@ html, body{
 /* Content Css */
 
 .contentHolder {
-	width: 82%;
+	width: 83.69999%;
 	height:91%;
 	position: absolute;
-	margin-left: 18%;
+	margin-left: 200px;
 	/*top:0;*/
 	left: 0;
 	background-color: #e8e8e8;
@@ -161,8 +161,39 @@ html, body{
 .textArea {
 	margin-left: 20px;
 	margin-top: 15px;
+	padding: 5px;
+	border: solid;
 	border-radius: 5px;
-	width: 500px;
+	border-width: 2px;
+	border-color: gray;
+	background-color: white;
+	width: 750px;
 	height: 250px;
+	overflow-y: auto;
 }
+
+.textArea_header{
+	width: 19.866666666666666666666666%;
+	border-top: solid;
+	border-right: solid;
+	border-bottom: solid;
+	border-width: 1px;
+	border-color: gray;
+	float: left; 
+}
+
+.textArea_column {
+	width: 19.866666666666666666666666%;
+	border-right: solid;
+	border-bottom: solid;
+	border-width: 1px;
+	border-color: gray;
+	float:left;
+}
+
+#table {
+	margin-left: 1%;
+	width: 99%;
+}
+
 /* End of Content Css */
