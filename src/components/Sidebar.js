@@ -38,7 +38,7 @@ class SidebarNav extends Component {
           </div>
         </Menu.Item>
 
-        <Menu.Item name='products'  as='a' href='/'>
+        <Menu.Item name='products'  as='a' href='/product'>
           <div>
             <Icon circular inverted color='teal' name='barcode'  size='small' />
             {' '}Products

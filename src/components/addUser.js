@@ -9,7 +9,7 @@ class AddCustomer extends Component{
     const {fname,lname,address,contact,bday} = this.state;
     const data = {Name: fname+' '+lname,Address: address, ContactNum: contact, Birthday: bday};
     this.setState({ fname: '', lname: '' , address: '',contact:'',bday: ''})
-    axios.post('http://localhost:3001/api/customer', data)
+    axios.post('http://localhost:3001/api/customer/', data)
     .then(function (response) {
       console.log(response);
 

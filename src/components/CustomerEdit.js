@@ -19,6 +19,7 @@ class EditCustomer extends Component{
       window.location.reload();
     })
     .catch(function (error) {
+      console.log(error)
       switch(error.response.data.status){
         case 500:
           alert(error.response.data.message);

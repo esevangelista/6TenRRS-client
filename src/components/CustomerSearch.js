@@ -16,7 +16,7 @@ export default class SearchCustomer extends Component {
   }
   handleChange = (e,{name,value}) => this.setState({search: value})
   handleSubmit = e => {
-    axios.get(`http://localhost:3001/api/customer/${this.state.search}`)
+    axios.get(`http://localhost:3001/api/customerName/${this.state.search}`)
       .then((response) => {
         const results = response.data.data;
         this.setState({customers:results,showResults:true});
