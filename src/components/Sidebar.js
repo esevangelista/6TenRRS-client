@@ -7,13 +7,13 @@ class SidebarNav extends Component {
       <Sidebar as={Menu} style={{width:'200px'}} visible={true} vertical inverted>
 
         <Menu.Item as='a' href='/' name='appName' style={{background:'#59b8ba'}} header>
-            <h1>{' '}6ten RSS</h1>
+            <h1>{' '}6TENRRS</h1>
         </Menu.Item>
 
-        <Menu.Item name='customers'  as='a' href='/customer'>
+        <Menu.Item name='overview'  as='a' href='/' >
           <div>
-            <Icon circular inverted color='teal' name='users'  size='small' />
-            {' '}Customers
+              <Icon circular inverted color='teal'  name='dashboard' size='small'/>
+              {' '}Overview
           </div>
         </Menu.Item>
 
@@ -24,17 +24,17 @@ class SidebarNav extends Component {
             </div>
         </Menu.Item>
 
+        <Menu.Item name='customers'  as='a' href='/customer'>
+          <div>
+            <Icon circular inverted color='teal' name='users'  size='small' />
+            {' '}Customers
+          </div>
+        </Menu.Item>
+
         <Menu.Item name='branches'  as='a' href='/branch'>
           <div>
             <Icon circular inverted color='teal' name='building outline'  size='small' />
             {' '}Branches
-          </div>
-        </Menu.Item>
-
-        <Menu.Item name='promos'  as='a' href='/promo'>
-          <div>
-            <Icon circular inverted color='teal' name='bar chart'  size='small' />
-            {' '}Promos
           </div>
         </Menu.Item>
 
@@ -44,22 +44,8 @@ class SidebarNav extends Component {
             {' '}Products
           </div>
         </Menu.Item>
-
-        <Menu.Item name='promostar'  as='a' href='/promostar'>
-           <div>
-            <Icon circular inverted color='teal' name='star'  size='small' />
-            {' '}Promo Stars
-          </div>
-        </Menu.Item>
-
-        <Menu.Item name='reward'  as='a' href='/reward'>
-           <div>
-            <Icon circular inverted color='teal' name='thumbs up'  size='small' />
-            {' '}Rewards
-          </div>
-        </Menu.Item>
         
-        <Menu.Item name='stocks'  as='a' href='/stock'>
+        <Menu.Item name='stocks'  as='a' href='/'>
            <div>
             <Icon circular inverted color='teal' name='industry'  size='small' />
             {' '}Stocks

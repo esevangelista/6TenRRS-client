@@ -3,7 +3,7 @@
 import React , {Component} from 'react'
 import { Button, Form, Grid, Header, Image, Segment, Message} from 'semantic-ui-react'
 import axios from 'axios';
-
+import Home from './Home';
 
 
 class LoginForm extends Component{
@@ -30,21 +30,24 @@ class LoginForm extends Component{
   }
   handleOnSubmit(e){
     e.preventDefault();
-    
+    const {username, password} = this.state;
+    this.setState({username:'',password: ''});
+
     const { history } = this.props;
+    console.log(this.props);
     axios.post('http://localhost:3001/api/login', {
       username: this.state.username,
       password: this.state.password
     })
     .then(function (response) {
-
+      console.log(response);
       history.push('/');
     })
     .catch(function (error) {
 
       switch(error.response.data.status){
         case 422:
-          console.log(error.response.data.message);
+          alert(error.response.data.message);
           break;
       }
 
