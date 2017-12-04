@@ -3,6 +3,7 @@ import axios from 'axios';
 import Sidebar from './../components/Sidebar';
 import BranchMenu from './../components/Branch/BranchMenu';
 import BranchView from './../components/Branch/BranchView';
+
 import { Grid, Segment, Header} from 'semantic-ui-react'
 
 export default class Branch extends Component {
@@ -25,7 +26,6 @@ export default class Branch extends Component {
                 </Grid.Column>
             </Grid>
           </Grid.Column>
-          
       </Grid>
     )
   }

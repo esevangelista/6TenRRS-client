@@ -9,7 +9,6 @@ import Branch from './pages/Branch';
 import Reward from './pages/Reward'
 import axios from 'axios';
 
-
 class App extends Component {   
 
   render(){
