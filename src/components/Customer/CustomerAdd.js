@@ -12,7 +12,7 @@ class AddCustomer extends Component{
     axios.post('http://localhost:3001/api/customer/', data)
     .then(function (response) {
       console.log(response);
-
+      window.location.reload();
     })
     .catch(function (error) {
       switch(error.response.data.status){
