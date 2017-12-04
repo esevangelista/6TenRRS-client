@@ -8,6 +8,7 @@ import PromoSearch from './../components/Promo/PromoSearch';
 import { Grid, Segment, Header} from 'semantic-ui-react'
 
 export default class Product extends Component {
+
   render() {
     return (
       <Grid fixed='true' stackable>
