@@ -2,13 +2,13 @@ import React, { Component } from "react";
 import axios from 'axios';
 import {Redirect} from 'react-router-dom';
 
-import Sidebar from './../components/Sidebar';
+import Sidebar from './../Sidebar';
 import { Grid , Menu, Input, Image, Form} from 'semantic-ui-react'
-import AddBranch from './../components/BranchAdd';
-import SearchBranch from './../components/BranchSearch';
+import AddStock from './StockAdd';
+import SearchStock from './StockSearch';
 
 
-export default class BranchMenu extends Component {
+export default class StockMenu extends Component {
   state = { activeItem: '' , search:''}
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
@@ -20,11 +20,11 @@ export default class BranchMenu extends Component {
     return (
 
       <Menu pointing secondary size='large'>
-        <Menu.Item name='New' active={activeItem === 'New'}><AddBranch /></Menu.Item>
+        <Menu.Item name='New' active={activeItem === 'New'}><AddStock /></Menu.Item>
         <Menu.Item name='logo' active={activeItem === 'logo'} position='right'><Image src='./logo.png' size='mini' centered/></Menu.Item>
         <Menu.Menu position='right'>
           <Menu.Item>
-            <SearchBranch />
+            <SearchStock />
           </Menu.Item>
           <Menu.Item name='logout' active={activeItem === 'logout'} onClick={this.handleItemClick} />
         </Menu.Menu>

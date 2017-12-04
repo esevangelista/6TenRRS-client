@@ -1,8 +1,8 @@
 import React, { Component} from "react";
 import axios from 'axios';
 import { Table, Icon } from 'semantic-ui-react'
-import EditStock from './../components/StockEdit';
-import DelStock from './../components/StockDelete';
+import EditStock from './StockEdit';
+import DelStock from './StockDelete';
 
 
 

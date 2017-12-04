@@ -6,11 +6,8 @@ import RewardsView from './../components/Reward/RewardsView';
 import RewardsRev from './../components/Reward/RewardsRev';
 import { Grid, Segment, Header} from 'semantic-ui-react'
 
-export default class Customer extends Component {
-  
-
+export default class Reward extends Component {
   render() {
-
     return (
       <Grid fixed='true' stackable>
           <Grid.Column style={{width:'14%'}}>

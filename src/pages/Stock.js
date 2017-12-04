@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Sidebar from './../components/Sidebar';
-import StockMenu from './../components/StockMenu';
-import StockView from './../components/StockView';
+import StockMenu from './../components/Stock/StockMenu';
+import StockView from './../components/Stock/StockView';
 import { Grid, Segment, Header} from 'semantic-ui-react'
 
 export default class Stock extends Component {
