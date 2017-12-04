@@ -57,14 +57,6 @@ class SidebarNav extends Component {
             {' '}Rewards
           </div>
         </Menu.Item>
-        <Menu.Item name='reports'  as='a' href='/'>
-           <div>
-            <Icon circular inverted color='teal' name='money'  size='small' />
-            {' '}Reports
-          </div>
-        </Menu.Item>
-
-
       </Sidebar>
     )
   }

@@ -1,47 +1,103 @@
 import React, { Component } from "react";
-import { Button, Header, Image, Modal,Form , Segment, Message} from 'semantic-ui-react'
+import { Button, Header, Image, Modal,Form , Segment, Message,Dropdown, Label, Input, Checkbox} from 'semantic-ui-react'
 import axios from 'axios';
 
+var branchOptions = [], productOptions=[];
+var choices = [];
+
 class AddStock extends Component{
-  state = {}
-  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  state = { branches: [],products: [],valueB:'', valueP: '', Quantity:'' }
   handleSubmit = () => {
-    const {Product_Id, Branch_Id, Quantity} = this.state;
-    const data = {Product_Id: Product_Id, Branch_Id: Branch_Id, Quantity: Quantity};
-    this.setState({ Product_Id: '', Branch_Id: '', Quantity: 0});
-    axios.post('http://localhost:3001/api/stock/', data)
-    .then(function (response) {
-      console.log(response);
-
+    const data = { Product_id : this.state.valueP, Quantity: this.state.Quantity}
+    this.setState({})
+    axios.post(`http://localhost:3001/api/stock/${this.state.valueB}`,data)
+    .then((response)=>{
+      console.log(response)
+      window.location.reload()
     })
-    .catch(function (error) {
-      switch(error.response.data.status){
-        case 500:
-          alert(error.response.data.message);
-          break;
-      }
-    });
-
+    .catch((error)=>{
+      console.log(error);
+    })
   }
-
+  handleChange = (e,{value}) => this.setState({Quantity:value})
+  handleBChange = (e, { value }) =>  this.setState({valueB: value})
+  handlePChange = (e, { value }) =>  this.setState({valueP: value});   
+  
+  componentDidMount(){
+    
+    axios.get('http://localhost:3001/api/branch')
+    .then((response) => {      
+      this.setState({branches:response.data.data})      
+      for(var i=0;i<this.state.branches.length; i++){
+        var choice = {
+          key : this.state.branches[i].BranchID, 
+          value: this.state.branches[i].BranchID, 
+          text: this.state.branches[i].BranchLocation
+        }
+        branchOptions.push(choice);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+    
+  
+    axios.get('http://localhost:3001/api/product')
+    .then((response) => {
+      this.setState({products:response.data.data})
+      for(var i=0;i<this.state.products.length; i++){
+        var choice = {
+          key : this.state.products[i].ProdID, 
+          value: this.state.products[i].ProdID, 
+          text: this.state.products[i].ProdName + '(Php ' + this.state.products[i].Price + ' )',
+        }
+        productOptions.push(choice);
+      }
+    })
+    .catch((error) => {
+      console.log(error);      
+    });
+  }
 	render(){
-    const {Product_Id, Branch_Id, Quantity} = this.state;
+    const {branches,value, Quantity} = this.state;
     return(
-      <Modal dimmer trigger={<Button color='teal'>New Stock</Button>} onSubmit={this.handleSubmit}>
+      <Modal dimmer trigger={<Button color='teal'>Add Stock</Button>} >
           <Modal.Header>Add Stock</Modal.Header>
           <Modal.Content >
-
-            <Form >
-              <Form.Group>
-                <Form.Input label='Product ID' placeholder='Product Id' name='prodid' value={Product_Id} onChange={this.handleChange} required/>
-                <Form.Input label='Branch ID' placeholder='Branch Id' name='branchid' value={Branch_Id} onChange={this.handleChange} required/>
-                <Form.Input label='Quantity' placeholder='Quantity' name='quantity' value={Quantity} onChange={this.handleChange} required/>                
-              </Form.Group>
-              <Button type='submit'>Submit</Button>
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Field required>
+                <Header> Select a Branch </Header>
+                <Dropdown
+                  fluid
+                  scrolling
+                  onChange={this.handleBChange}
+                  options={branchOptions}
+                  placeholder='Branch'
+                  selection
+                  search
+                  value={value}
+                />
+              </Form.Field>
+              
+              <Form.Field required>
+                <Header> Select Items </Header>
+                <Dropdown
+                  fluid
+                  upward
+                  scrolling
+                  onChange={this.handlePChange}
+                  options={productOptions}
+                  placeholder='Products'
+                  selection
+                  search
+                  value={value}
+                />
+              </Form.Field>
+              <Form.Input type='number' label='Quantity' name='Quantity' value={Quantity} onChange={this.handleChange} required />
+              <Button type='submit' fluid color='teal'>Submit</Button>
             </Form>
           </Modal.Content>
         </Modal>
-
     )
   }
   

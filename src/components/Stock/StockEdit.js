@@ -5,14 +5,14 @@ import axios from 'axios';
 class EditStock extends Component{
   state = 
   { 
-    BranchID: this.props.BranchID,
-    ProductID: this.props.ProductID,
-    Quantity: this.props.Quantity
+
+    Quantity: this.props.value.Quantity,
+    Product_Id: this.props.value.Product_Id
   }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   handleSubmit = () => {
     const data = this.state;
-    axios.put(`http://localhost:3001/api/stock/${this.props.BranchID}/${this.props.ProductID}`, data)
+    axios.put(`http://localhost:3001/api/stock/${this.props.BranchID}/${this.props.value.StockID}`, data)
     .then(function (response) {
       console.log(response);
       window.location.reload();
@@ -25,24 +25,22 @@ class EditStock extends Component{
           break;
       }
     });
-    this.setState({ BranchID: '', ProductID: '', Quantity: 0});
+    this.setState({});
 
   }
 
   render(){
-    const {BranchID, ProductID, Quantity} = this.state;
+    const {Quantity} = this.state;
     return(
       <Modal dimmer trigger={<Icon name='edit' size='large' color='black'/>} onSubmit={this.handleSubmit}>
           <Modal.Header>Edit Stock Info</Modal.Header>
           <Modal.Content >
 
             <Form >
-              <Form.Group unstackable widths={2}>
-                <Form.Input label='Branch ID' placeholder='Branch ID' name='BranchID' value={BranchID} onChange={this.handleChange} required/>
-                <Form.Input label='Product ID' placeholder='Product ID' name='ProductID' value={ProductID} onChange={this.handleChange} required />
+                <Form.Input label='Branch Location' placeholder='Branch Location' name='BranchLocation' value={this.props.value.BranchLocation} readOnly required/>
+                <Form.Input label='Product Name' placeholder='Product Name' name='ProdName' value={this.props.value.ProdName} readOnly required />
                 <Form.Input label='Quantity' placeholder='Quantity' name='Quantity' value={Quantity} onChange={this.handleChange} required />
-              </Form.Group>
-              <Button type='submit'>Submit</Button>
+              <Button type='submit' fluid color='teal'>Submit</Button>
             </Form>
           </Modal.Content>
         </Modal>

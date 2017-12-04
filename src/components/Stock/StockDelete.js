@@ -9,7 +9,7 @@ class DelStock extends Component {
   show = () => this.setState({ open: true })
   handleConfirm = () => {
     this.setState({ open: false })
-    axios.delete(`http://localhost:3001/api/stock/${this.props.BranchID}/${this.props.ProductID}`)
+    axios.delete(`http://localhost:3001/api/stock/${this.props.value.BranchID}/${this.props.value.StockID}`)
     .then(function (response) {
       console.log(response);
       window.location.reload();
@@ -30,7 +30,8 @@ class DelStock extends Component {
         <Popup inverted trigger={<Icon as='i' name='trash' link size='large' color='black' onClick={this.show}/>} content='Delete a stock'/>
         <Confirm
           open={this.state.open}
-          content='Are you sure you want to delete this stock?'
+          header={this.props.value.ProdName}
+          content='Are you sure you want to delete this product stock on this branch?'
           onCancel={this.handleCancel}
           onConfirm={this.handleConfirm}
         />

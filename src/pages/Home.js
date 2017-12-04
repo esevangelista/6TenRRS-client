@@ -1,23 +1,18 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Sidebar from './../components/Sidebar';
-import Login from './auth';
-import { Grid } from 'semantic-ui-react'
+import HomeMenu from './../components/Home/Menu';
+import PointsEarned from './../components/Home/PointsEarned';
+import PointsEarnedInYr from './../components/Home/PointsEarnedInYr';
+import PointsUsedInYr from './../components/Home/PointsUsedinYr';
+import ValidPromoStars from './../components/Home/ValidPromoStars';
+import UsedPromoStars from './../components/Home/UsedPromoStars';
+import { Grid, Header, Segment } from 'semantic-ui-react'
 
 var customers = [];
 export default class Home extends Component {
   state = {};
 
-  componentDidMount(){
-      axios.post('http://localhost:3001/api/session/')
-      .then(function(response){
-        console.log(response)
-        
-      })
-      .catch(function(error){
-        console.log(error);
-      });
-  }
   render() {
     return (
       <Grid fixed='true' stackable>
@@ -25,7 +20,17 @@ export default class Home extends Component {
             <Sidebar />
           </Grid.Column>
           <Grid.Column  style={{width:'86%'}} >
-           
+            <HomeMenu />
+            <Segment color='teal'>
+              <Header size='huge'> Reports </Header>
+              <Segment.Group horizontal='true' color='teal'>
+                <Segment color='teal'><PointsEarned /></Segment>
+                <Segment color='teal'><PointsEarnedInYr /></Segment>
+                <Segment color='teal'><PointsUsedInYr /></Segment>
+                <Segment color='teal'><ValidPromoStars /></Segment>
+                <Segment color='teal'><UsedPromoStars /></Segment>
+              </Segment.Group>
+            </Segment>
 
           </Grid.Column>
       </Grid>

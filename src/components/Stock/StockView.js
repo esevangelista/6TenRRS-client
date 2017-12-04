@@ -27,9 +27,12 @@ export default class StockView extends Component {
       <Table singleLine striped color='teal'>
         <Table.Header >
           <Table.Row >
-            <Table.HeaderCell>ID</Table.HeaderCell>
+            <Table.HeaderCell>Stock ID</Table.HeaderCell>
             <Table.HeaderCell>Branch ID</Table.HeaderCell>
+            <Table.HeaderCell>Branch Location</Table.HeaderCell>
             <Table.HeaderCell>Product ID</Table.HeaderCell>
+            <Table.HeaderCell>Product Name</Table.HeaderCell>
+            <Table.HeaderCell>Product Price</Table.HeaderCell>
             <Table.HeaderCell>Quantity</Table.HeaderCell>
             <Table.HeaderCell />
             <Table.HeaderCell />
@@ -42,13 +45,15 @@ export default class StockView extends Component {
             stocks.map((stock) => {
               return (
                 <Table.Row key = {stock.StockID}>
-                  <Table.Cell>{stock.StockId}</Table.Cell>                
-                  <Table.Cell> {stock.Branch_Id}</Table.Cell>
-                  <Table.Cell>{stock.Product_Id}</Table.Cell>
+                  <Table.Cell>{stock.StockID}</Table.Cell>    
+                  <Table.Cell> {stock.BranchID}</Table.Cell>            
+                  <Table.Cell> {stock.BranchLocation}</Table.Cell>
+                  <Table.Cell>{stock.ProdID}</Table.Cell>
+                  <Table.Cell>{stock.ProdName}</Table.Cell>
+                  <Table.Cell>{stock.Price}</Table.Cell>
                   <Table.Cell>{stock.Quantity}</Table.Cell>
-                  <Table.Cell collapsing><EditStock BranchID={stock.Branch_Id} ProductID={stock.Product_Id}/></Table.Cell>
-                  <Table.Cell collapsing><DelStock BranchID={stock.Branch_Id} ProductID={stock.Product_Id}/></Table.Cell>
-
+                  <Table.Cell collapsing><EditStock value={stock}/></Table.Cell>
+                  <Table.Cell collapsing><DelStock value={stock}/></Table.Cell>
                 </Table.Row>
               );
             })
