@@ -1,24 +1,24 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import { Card, Input, Image, Form, Modal,Table} from 'semantic-ui-react'
-import EditBranch from './BranchEdit';
-import DelBranch from './BranchDelete';
+import EditStock from './StockEdit';
+import DelStock from './StockDelete';
 
 
 export default class SearchBranch extends Component {
 
   state =
   {
-    branches: {},
+    stocks: {},
     search: '',
     showResults: false
   }
   handleChange = (e,{name,value}) => this.setState({search: value})
   handleSubmit = e => {
-    axios.get(`http://localhost:3001/api/branch/${this.state.search}`)
+    axios.get(`http://localhost:3001/api/stock/${this.state.search}`)
       .then((response) => {
         const results = response.data.data;
-        this.setState({branches:results,showResults:true});
+        this.setState({stocks:results,showResults:true});
         
       })
       .catch((error) => {
@@ -27,7 +27,7 @@ export default class SearchBranch extends Component {
   }
   closeModal = () => this.setState({showResults:false})
   render(){
-    const {branches, search, showResults} = this.state;
+    const {stocks, search, showResults} = this.state;
     return(
       <div> 
         { showResults && 
@@ -38,23 +38,23 @@ export default class SearchBranch extends Component {
                     <Table.Header >
                       <Table.Row >
                         <Table.HeaderCell>ID</Table.HeaderCell>
-                        <Table.HeaderCell>Branch Location</Table.HeaderCell>
-                        <Table.HeaderCell>Branch Manager</Table.HeaderCell>
+                        <Table.HeaderCell>Branch ID</Table.HeaderCell>
+                        <Table.HeaderCell>Stock ID</Table.HeaderCell>
+                        <Table.HeaderCell>Quantity</Table.HeaderCell>
                         <Table.HeaderCell />
                         <Table.HeaderCell />
                       </Table.Row>
                     </Table.Header>
                     <Table.Body>
                       {
-                        branches.map((branch) => {
+                        stocks.map((stock) => {
                           return (
-                            <Table.Row key = {branch.BranchID}>
-                              <Table.Cell>{branch.BranchID}</Table.Cell>
-                              <Table.Cell>{branch.BranchLocation}</Table.Cell>
-                              <Table.Cell>{branch.BranchManager}</Table.Cell>
-                              <Table.Cell collapsing><EditBranch value={branch}/></Table.Cell>
-                              <Table.Cell collapsing><DelBranch value={branch}/></Table.Cell>
-
+                            <Table.Row key = {stock.StockID}>
+                              <Table.Cell>{stock.Branch_ID}</Table.Cell>
+                              <Table.Cell>{stock.Product_ID}</Table.Cell>
+                              <Table.Cell>{stock.Quantity}</Table.Cell>
+                              <Table.Cell collapsing><EditStock BranchID={stock.Branch_ID} ProductID={stock.Product_ID}/></Table.Cell>
+                              <Table.Cell collapsing><DelStock BranchID={stock.Branch_ID} ProductID={stock.Product_ID}/></Table.Cell>
                             </Table.Row>
                           );
                         })
@@ -66,7 +66,7 @@ export default class SearchBranch extends Component {
           )
         }
         <Form onSubmit={this.handleSubmit}>
-          <Form.Input icon='search' placeholder='Search Branch Location' name={search} value={search} onChange={this.handleChange}  />
+          <Form.Input icon='search' placeholder='Search Stock by Branch ID' name={search} value={search} onChange={this.handleChange}  />
         </Form>
    
       </div>
