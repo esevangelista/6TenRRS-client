@@ -31,7 +31,7 @@ class SidebarNav extends Component {
           </div>
         </Menu.Item>
 
-        <Menu.Item name='branches'  as='a' href='/'>
+        <Menu.Item name='branches'  as='a' href='/branch'>
           <div>
             <Icon circular inverted color='teal' name='building outline'  size='small' />
             {' '}Branches
@@ -49,6 +49,18 @@ class SidebarNav extends Component {
            <div>
             <Icon circular inverted color='teal' name='industry'  size='small' />
             {' '}Stocks
+          </div>
+        </Menu.Item>
+        <Menu.Item name='rewards'  as='a' href='/rewards'>
+           <div>
+            <Icon circular inverted color='teal' name='money'  size='small' />
+            {' '}Rewards
+          </div>
+        </Menu.Item>
+        <Menu.Item name='reports'  as='a' href='/'>
+           <div>
+            <Icon circular inverted color='teal' name='money'  size='small' />
+            {' '}Reports
           </div>
         </Menu.Item>
 

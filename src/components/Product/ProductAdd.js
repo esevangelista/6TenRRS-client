@@ -7,7 +7,6 @@ class AddProduct extends Component{
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   handleSubmit = () => {
     const data = this.state;
-    console.log(data)
     this.setState({ProdName:'',Price:'' })
     axios.post('http://localhost:3001/api/product/', data)
     .then(function (response) {

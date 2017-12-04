@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import { Card, Input, Image, Form, Modal,Table, Dropdown} from 'semantic-ui-react'
-import EditProduct from './../components/ProductEdit';
-import DelProduct from './../components/ProductDelete';
+import EditPromo from './PromoEdit';
+import DelPromo from './PromoDelete';
 
 
-export default class SearchProduct extends Component {
-
+export default class SearchPromo extends Component {
 
   state =
   {
@@ -16,7 +15,7 @@ export default class SearchProduct extends Component {
   }
   handleChange = (e,{name,value}) => this.setState({search: value})
   handleSubmit = e => {
-    axios.get(`http://localhost:3001/api/productName/${this.state.search}`)
+    axios.get(`http://localhost:3001/api/promo/${this.state.search}`)
       .then((response) => {
         const results = response.data.data;
         this.setState({products:results,showResults:true});
@@ -32,15 +31,18 @@ export default class SearchProduct extends Component {
     return(
       <div> 
         { showResults && 
-          (<Modal  open={showResults} onClose={this.closeModal}  blurring >
+          (<Modal  open={showResults} onClose={this.closeModal}  blurring='true' >
             <Modal.Header>Search results for '{search}'</Modal.Header>
-                <Modal.Content  scrolling>
+                <Modal.Content  >
                     <Table singleLine striped color='teal' fluid compact>
                         <Table.Header >
                         <Table.Row >
-                            <Table.HeaderCell>ID</Table.HeaderCell>
+                            <Table.HeaderCell>Promo ID</Table.HeaderCell>
                             <Table.HeaderCell>Product Name</Table.HeaderCell>
                             <Table.HeaderCell>Php</Table.HeaderCell>
+                            <Table.HeaderCell>Stars Earnable</Table.HeaderCell>
+                            <Table.HeaderCell>Stars Needed</Table.HeaderCell>
+                            <Table.HeaderCell>Expiration Date</Table.HeaderCell>
                             <Table.HeaderCell />
                         </Table.Row>
                         </Table.Header>
@@ -52,12 +54,14 @@ export default class SearchProduct extends Component {
                                 <Table.Cell>{product.ProdID}</Table.Cell>
                                 <Table.Cell> {product.ProdName}</Table.Cell>
                                 <Table.Cell>{product.Price}</Table.Cell>
+                                <Table.Cell>{product.StarsEarnable}</Table.Cell>
+                                <Table.Cell>{product.StarsNeeded}</Table.Cell>
+                                <Table.Cell>{product.ExprDate}</Table.Cell>
                                 <Table.Cell>
                                     <Dropdown icon='options' button className='icon'>
                                     <Dropdown.Menu>
-                                        <Dropdown.Item><EditProduct value={product}/></Dropdown.Item>
-                                        <Dropdown.Item><DelProduct value={product}/></Dropdown.Item>
-                                        <Dropdown.Item>Promo</Dropdown.Item>
+                                        <Dropdown.Item><EditPromo value={product}/></Dropdown.Item>
+                                        <Dropdown.Item><DelPromo value={product}/></Dropdown.Item>
                                     </Dropdown.Menu>
                                     </Dropdown>
                                 </Table.Cell>
@@ -71,7 +75,7 @@ export default class SearchProduct extends Component {
             </Modal> 
           )
         }
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} fluid>
           <Form.Input icon='search' placeholder='Search a product' name={search} value={search} onChange={this.handleChange}  />
         </Form>
    

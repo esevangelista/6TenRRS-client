@@ -1,9 +1,9 @@
 import React, { Component} from "react";
 import axios from 'axios';
 import { Table, Icon, Dropdown } from 'semantic-ui-react'
-import EditProduct from './../components/ProductEdit';
-import DelProduct from './../components/ProductDelete';
-import PromoUtil from './../components/PromoModal';
+import EditProduct from './ProductEdit';
+import DelProduct from './ProductDelete';
+import AddPromo from './../Promo/PromoAdd';
 
 export default class ProductView extends Component {
   state = {
@@ -45,7 +45,7 @@ export default class ProductView extends Component {
                       <Dropdown.Menu>
                         <Dropdown.Item><EditProduct value={product}/></Dropdown.Item>
                         <Dropdown.Item><DelProduct value={product}/></Dropdown.Item>
-                        <Dropdown.Item><PromoUtil /></Dropdown.Item>
+                        <Dropdown.Item><AddPromo value={product} /></Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   </Table.Cell>

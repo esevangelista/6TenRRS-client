@@ -1,8 +1,8 @@
 import React, { Component} from "react";
 import axios from 'axios';
 import { Table, Icon } from 'semantic-ui-react'
-import EditCustomer from './../components/CustomerEdit';
-import DelCustomer from './../components/CustomerDelete';
+import EditCustomer from './CustomerEdit';
+import DelCustomer from './CustomerDelete';
 
 
 
