@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import Sidebar from './../components/Sidebar';
-import CustomerMenu from './../components/CustomerMenu';
-import CustomerView from './../components/CustomerView';
+import CustomerMenu from './../components/Customer/CustomerMenu';
+import CustomerView from './../components/Customer/CustomerView';
 import { Grid, Segment, Header} from 'semantic-ui-react'
 
 export default class Customer extends Component {
